@@ -1,0 +1,24 @@
+{
+  "name": "delete-from-frontify",
+  "version": "1.0.0",
+  "description": "A Puppeteer automation script to delete components from the design system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node deleteFromFrontify.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenYoobic/delete-from-frontify.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BenYoobic/delete-from-frontify/issues"
+  },
+  "homepage": "https://github.com/BenYoobic/delete-from-frontify#readme",
+  "dependencies": {
+    "dotenv": "^7.0.0",
+    "puppeteer": "^1.14.0"
+  }
+}
