@@ -32,18 +32,18 @@ async function init() {
 
     // If you have gotten to this for loop, the page has loaded with components
     // @todo work out how many elements on the page
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 17; i++) {
         console.log(i);
         if (await page.$(componentCardElement) !== null) {
-            await page.waitFor(800);
+            await page.waitFor(500);
             await page.click(settingsButton);
-            await page.waitFor(800);
+            await page.waitFor(500);
             await page.click(deleteButton);
-            await page.waitFor(800);
+            await page.waitFor(500);
             await page.$eval(confirmDelete, el => el.click());
         }
-        console.log('Elements deleted. Closing browser');
     }
+    console.log('Elements deleted. Closing browser');
     await browser.close();
 }
 
