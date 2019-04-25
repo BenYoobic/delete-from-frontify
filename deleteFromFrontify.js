@@ -28,9 +28,13 @@ puppeteer.launch({ headless: true }).then(async browser => {
     ]);
     console.log('Logged in successfully!');
 
+    console.log('Assessing Page Elements!');
+    await page.waitFor(1000);
+    const searchValue = await page.$$(`${componentCardElement}`);
+    console.log(searchValue.length);
+    let counter = searchValue.length;
     // If you have gotten to this for loop, the page has loaded with components
-    // @todo work out how many elements on the page
-    for (let i = 0; i < 1; i++) {
+    for (let i = 0; i < counter; i++) {
         console.log('Deleting from Frontify!');
         if (await page.$(componentCardElement) !== null) {
             await page.waitFor(500);
