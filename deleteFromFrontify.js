@@ -4,7 +4,7 @@ const puppeteer = require('puppeteer');
 require('dotenv').config();
 
 // URL's and Page elements
-const loginAndRedirectUrl = 'https://design.yoobic.com/auth/?referer=%2Fpatterns%2F192174%2Fyobi';
+const loginAndRedirectUrl = process.env.LOGIN_URL;
 const componentCardElement = '.e-card.pattern.cf';
 const settingsButton = '.btn-configure';
 const deleteButton = '.btn.btn-delete';
