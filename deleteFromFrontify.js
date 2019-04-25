@@ -11,11 +11,9 @@ const deleteButton = '.btn.btn-delete';
 const confirmDelete = 'a.cm-btn.cm-btn--primary';
 
 // Delete Function
-async function init() {
-    // Change headless to not view browser
-    const browser = await puppeteer.launch({ headless: false });
+puppeteer.launch({ headless: true }).then(async browser => {
+
     const page = await browser.newPage();
-    
     // Loads Frontify and enters Username and Password
     await page.setViewport({ width: 1200, height: 720 })
     await page.goto(loginAndRedirectUrl, { waitUntil: 'networkidle0' }); // wait until page load
@@ -32,8 +30,8 @@ async function init() {
 
     // If you have gotten to this for loop, the page has loaded with components
     // @todo work out how many elements on the page
-    for (let i = 0; i < 17; i++) {
-        console.log(i);
+    for (let i = 0; i < 1; i++) {
+        console.log('Deleting from Frontify...');
         if (await page.$(componentCardElement) !== null) {
             await page.waitFor(500);
             await page.click(settingsButton);
@@ -43,8 +41,16 @@ async function init() {
             await page.$eval(confirmDelete, el => el.click());
         }
     }
-    console.log('Elements deleted. Closing browser');
+    clearInterval(twirlTimer)
     await browser.close();
-}
+    console.log('Elements deleted. Closing browser');
+});
 
-init();
+const twirlTimer = (() => {
+    const P = ["\\", "|", "/", "-"];
+    let x = 0;
+    return setInterval(() => {
+        process.stdout.write("\r" + P[x++]);
+        x &= 3;
+    }, 50);
+})();
