@@ -19,19 +19,19 @@ puppeteer.launch({ headless: true }).then(async browser => {
     await page.goto(loginAndRedirectUrl, { waitUntil: 'networkidle0' }); // wait until page load
     await page.type('.fld.email', process.env.LOGIN_EMAIL);
     await page.type('.fld.password', process.env.LOGIN_PASSWORD);
-    console.log('Entered Username and Password');
+    console.log('Entered Username and Password!');
 
     // Click login and wait for page to load
     await Promise.all([
         page.click('.btn-signin'),
         page.waitForNavigation({ waitUntil: 'networkidle0' }),
     ]);
-    console.log('Logged in successfully');
+    console.log('Logged in successfully!');
 
     // If you have gotten to this for loop, the page has loaded with components
     // @todo work out how many elements on the page
     for (let i = 0; i < 1; i++) {
-        console.log('Deleting from Frontify...');
+        console.log('Deleting from Frontify!');
         if (await page.$(componentCardElement) !== null) {
             await page.waitFor(500);
             await page.click(settingsButton);
@@ -43,7 +43,7 @@ puppeteer.launch({ headless: true }).then(async browser => {
     }
     clearInterval(twirlTimer)
     await browser.close();
-    console.log('Elements deleted. Closing browser');
+    console.log('Elements deleted. Closing browser.');
 });
 
 const twirlTimer = (() => {
